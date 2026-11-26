@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geometric Interactive Notes</title>
+<style>/*STYLE*/</style>
+</head>
+<body>
+<main id="app">
+  <header class="bar">
+    <h1>Geometric Interactive Notes</h1>
+    <button type="button" id="menu" class="menu">Menu</button>
+  </header>
+  <p id="where" class="where"></p>
+
+  <section id="home" aria-label="Levels">
+    <div id="levels"></div>
+  </section>
+
+  <!-- A pause between levels, so a new level doesn't start without warning. -->
+  <section id="checkpoint" hidden aria-labelledby="cp-next">
+    <div class="card cp-card">
+      <p id="cp-done" class="cp-done"></p>
+      <p class="ask-kind">Up Next</p>
+      <h2 id="cp-next" class="lead" tabindex="-1"></h2>
+      <p id="cp-note" class="cp-note"></p>
+      <ol id="cp-themes" class="cp-themes"></ol>
+      <p class="row"><button type="button" class="primary" id="cp-go">Start</button></p>
+    </div>
+  </section>
+
+  <section id="task" hidden aria-labelledby="ask">
+    <div class="ask-box"><p id="ask-kind" class="ask-kind"></p><h2 id="ask" class="lead"></h2></div>
+    <div class="split">
+      <div class="card diagram-card">
+        <p class="card-title">Diagram</p>
+        <div id="tools" class="tools" role="toolbar" aria-label="Diagram tools"></div>
+        <svg id="svg" role="group" aria-label="Diagram">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="arrowhead"></path>
+            </marker>
+            <marker id="arrow-hl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="arrowhead-hl"></path>
+            </marker>
+            <marker id="arrow-drawn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="arrowhead-drawn"></path>
+            </marker>
+          </defs>
+        </svg>
+        <p id="tool-hint" class="hint"></p>
+      </div>
+      <div class="side">
+        <div class="card label-card">
+          <p class="card-title">Labeling</p>
+          <!-- The question again, where students type, so it's never out of sight. Screen readers already heard it. -->
+          <div id="ask-copy" class="ask-box ask-copy" aria-hidden="true"></div>
+          <div id="label-area"></div>
+          <p id="fb" class="feedback" role="status" aria-live="polite"></p>
+          <p class="row"><button type="button" id="next" class="primary" hidden>Next</button><button type="button" id="next2" hidden>Next Mistake</button></p>
+        </div>
+        <div id="view-toggles" class="view-toggles" role="group" aria-label="What to show" hidden>
+          <button type="button" id="tog-meas" class="toggle" aria-pressed="true">Measurements</button>
+          <button type="button" id="tog-cong" class="toggle" aria-pressed="true">Congruent Marks</button>
+        </div>
+        <div id="measures" class="card measures" hidden>
+          <p class="card-title" id="len-title">Measurements</p>
+          <ul id="lengths" class="lengths" aria-labelledby="len-title"></ul>
+          <p class="card-title" id="cong-title">Congruent</p>
+          <ul id="congruent" class="congruent" aria-labelledby="cong-title"></ul>
+        </div>
+      </div>
+    </div>
+    <details class="facts">
+      <summary>Figure Facts</summary>
+      <div id="facts-body"></div>
+    </details>
+  </section>
+  <p id="announce" class="sr" aria-live="polite"></p>
+</main>
+<script>/*GEOM*/</script>
+<script>/*NOTATION*/</script>
+<script>/*ALGEBRA*/</script>
+<script>/*TASKS*/</script>
+<script>/*DIAGRAM*/</script>
+<script>/*UI*/</script>
+</body>
+</html>
